@@ -7,9 +7,14 @@ repository = "https://github.com/bytecodealliance/cranelift-jit-demo"
 description = "Toy language implemented using cranelift-jit"
 edition = "2024"
 
+[lib]
+name = "cranelift_jit_demo"
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
 peg = "0.8.1"
 cranelift = "0.118.0"
 cranelift-module = "0.118.0"
 cranelift-jit = "0.118.0"
 cranelift-native = "0.118.0"
+pyo3 = { version = "0.20", features = ["extension-module"] }

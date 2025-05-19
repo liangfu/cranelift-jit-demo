@@ -2,6 +2,39 @@ Hello!
 
 This is a simple demo that JIT-compiles a toy language, using Cranelift.
 
+## Python Bindings
+
+This project now includes Python bindings using PyO3. This allows you to use the Cranelift JIT compiler from Python.
+
+### Installation
+
+To install the Python bindings:
+
+```bash
+# Development installation
+pip install maturin
+maturin develop
+
+# Or build a wheel
+maturin build
+pip install target/wheels/cranelift_jit_demo-*.whl
+```
+
+### Usage
+
+```python
+import cranelift_jit_demo
+
+# Create a new JIT compiler instance
+jit = cranelift_jit_demo.JitCompiler()
+
+# Compile and run code
+result = jit.run("function main() { return 42; }")
+print(f"Result: {result}")  # Output: 42
+
+# See the python_examples directory for more examples
+```
+
 It uses the new JIT interface in development
 [here](https://github.com/bytecodealliance/wasmtime/tree/main/cranelift/jit). JIT takes care
 of managing a symbol table, allocating memory, and performing relocations, offering
